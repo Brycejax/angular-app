@@ -23,4 +23,8 @@ export class AppComponent {
       content: blueprintData.serverContent
     });
   }
+
+  onIntervalFired(firedNum: number) {
+    console.log(firedNum);
+  }
 }
