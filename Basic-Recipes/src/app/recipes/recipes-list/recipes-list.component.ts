@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -11,7 +11,10 @@ export class RecipesListComponent implements OnInit {
   //check recipe.model.ts
   recipes: Recipe[] = [
     new Recipe('A Test Recipe', 'This is a test','https://get.pxhere.com/photo/egg-dish-food-cuisine-ingredient-produce-menemen-recipe-comfort-food-brunch-meal-frittata-Queso-flameado-breakfast-side-dish-poached-egg-turkish-food-indian-cuisine-1620832.jpg'),
+    new Recipe('Another Recipe', 'This is a test','https://get.pxhere.com/photo/egg-dish-food-cuisine-ingredient-produce-menemen-recipe-comfort-food-brunch-meal-frittata-Queso-flameado-breakfast-side-dish-poached-egg-turkish-food-indian-cuisine-1620832.jpg'),
   ];
+
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
 
   constructor() { }
@@ -19,4 +22,7 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe)
+  }
 }
